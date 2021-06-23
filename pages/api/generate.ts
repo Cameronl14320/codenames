@@ -13,7 +13,16 @@ export default function tiles() {
     let assassin_col = getRandomInt(5);
     tiles[assassin_row][assassin_col] = 3;
     for (let team = 1; team <= 2; team++) {
-        
+        var numTiles = 0;
+        while (numTiles < 5) {
+            let random_row = getRandomInt(5);
+            let random_col = getRandomInt(5);
+            let tile = tiles[random_row][random_col];
+            if (tile == 0) {
+                tiles[random_row][random_col] = team;
+                numTiles++;
+            }
+        }
     }
 }
 
