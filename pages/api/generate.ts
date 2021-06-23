@@ -1,3 +1,5 @@
+import { GetStaticProps } from 'next'
+
 /*
     Generate 5x5 tile board for spymasters
     0 - civilian
@@ -11,19 +13,24 @@ export default function tiles() {
     // assassin
     let assassin_row = getRandomInt(5);
     let assassin_col = getRandomInt(5);
-    tiles[assassin_row][assassin_col] = 3;
+    tiles[assassin_row][assassin_col] = 3; // update -- replace tile with assassin
+    // teams
     for (let team = 1; team <= 2; team++) {
         var numTiles = 0;
         while (numTiles < 5) {
             let random_row = getRandomInt(5);
             let random_col = getRandomInt(5);
             let tile = tiles[random_row][random_col];
-            if (tile == 0) {
-                tiles[random_row][random_col] = team;
+            if (tile == 0) { // check if civilian 
+                tiles[random_row][random_col] = team; // update - replace tile with team
                 numTiles++;
             }
         }
     }
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+    return
 }
 
 function getRandomInt(max : number) {
