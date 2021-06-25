@@ -1,4 +1,7 @@
-import { GetStaticProps } from 'next'
+import { getStaticProps } from './retrieve';
+
+const size = 5;
+const teams : number[] = [9, 8];
 
 /*
     Generate 5x5 tile board for spymasters
@@ -17,7 +20,7 @@ export default function Tiles() {
     // teams
     for (let team = 1; team <= 2; team++) {
         var numTiles = 0;
-        while (numTiles < 5) {
+        while (numTiles < teams[team]) {
             let random_row = getRandomInt(5);
             let random_col = getRandomInt(5);
             let tile = tiles[random_row][random_col];
@@ -28,10 +31,10 @@ export default function Tiles() {
         }
     }
     console.log(tiles);
+    var words : String[] = [];
+    words.map((word) =>)
     return tiles;
 }
-
-
 
 function getRandomInt(max : number) {
     return Math.floor(Math.random() * max);

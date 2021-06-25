@@ -1,5 +1,11 @@
 import { GetStaticProps } from 'next'
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    return
+    const res = await fetch('https://.../data/words')
+    const words = await res.json()
+    return {
+        props: {
+            words,
+        },
+    }
 }
