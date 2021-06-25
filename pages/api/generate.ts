@@ -7,7 +7,7 @@ import { GetStaticProps } from 'next'
     2 - blue
     3 - assassin
 */
-export default function tiles() {
+export default function Tiles() {
     // init board with civilians
     var tiles:number[][] = [ [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0 ,0] ];
     // assassin
@@ -27,11 +27,11 @@ export default function tiles() {
             }
         }
     }
+    console.log(tiles);
+    return tiles;
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-    return
-}
+
 
 function getRandomInt(max : number) {
     return Math.floor(Math.random() * max);
