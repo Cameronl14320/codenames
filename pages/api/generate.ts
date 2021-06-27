@@ -1,7 +1,8 @@
 import { getStaticProps } from './retrieve';
+import { words } from '../../data/words'
 
 const size = 5;
-const teams : number[] = [9, 8];
+const teams : Number[] = [9, 8];
 
 /*
     Generate 5x5 tile board for spymasters
@@ -10,9 +11,9 @@ const teams : number[] = [9, 8];
     2 - blue
     3 - assassin
 */
-export default function Tiles() {
+export function Tiles() {
     // init board with civilians
-    var tiles:number[][] = [ [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0 ,0] ];
+    var tiles:Number[][] = [ [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0 ,0] ];
     // assassin
     let assassin_row = getRandomInt(5);
     let assassin_col = getRandomInt(5);
@@ -31,9 +32,31 @@ export default function Tiles() {
         }
     }
     console.log(tiles);
-    var words : String[] = [];
-    words.map((word) =>)
     return tiles;
+}
+
+export function Words() {
+    var final_selected: String[][] = [];
+    var selected: String[] = [];
+    var num_words = words.length - 1;
+
+    for (let word_select = 0; word_select < 25; word_select++) {
+        let random_word: String = words[getRandomInt(num_words)];
+        if (!selected.includes(random_word)) {
+            selected.push(random_word);
+        }
+    }
+
+    var counter = 0;
+    for (let word_col = 0; word_col < 5; word_col++) {
+        let words_col: String[] = [];
+        for (let word_row = 0; word_row < 5; word_row++) {
+            words_col.push(selected[counter]);
+            counter++;
+        }
+    }
+    console.log(final_selected);
+    return final_selected;
 }
 
 function getRandomInt(max : number) {
