@@ -36,11 +36,11 @@ export function Tiles() {
 }
 
 export function Words() {
-    var final_selected: String[][] = [];
+    var final_selected: String[][] = [[], [], [], [], []];
     var selected: String[] = [];
     var num_words = words.length - 1;
 
-    for (let word_select = 0; word_select < 25; word_select++) {
+    while (selected.length < 25) {
         let random_word: String = words[getRandomInt(num_words)];
         if (!selected.includes(random_word)) {
             selected.push(random_word);
@@ -48,10 +48,10 @@ export function Words() {
     }
 
     var counter = 0;
+    console.log("selected: " + selected);
     for (let word_col = 0; word_col < 5; word_col++) {
-        let words_col: String[] = [];
         for (let word_row = 0; word_row < 5; word_row++) {
-            words_col.push(selected[counter]);
+            final_selected[word_col][word_row] = selected[counter];
             counter++;
         }
     }
