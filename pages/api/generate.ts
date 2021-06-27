@@ -1,4 +1,3 @@
-import { getStaticProps } from './retrieve';
 import { words } from '../../data/words'
 
 const size = 5;
@@ -11,7 +10,7 @@ const teams : Number[] = [9, 8];
     2 - blue
     3 - assassin
 */
-export function Tiles() {
+export function Tiles(): Number[][] {
     // init board with civilians
     var tiles:Number[][] = [ [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0 ,0] ];
     // assassin
@@ -31,11 +30,11 @@ export function Tiles() {
             }
         }
     }
-    console.log(tiles);
+    // console.log(tiles);
     return tiles;
 }
 
-export function Words() {
+export function Words(): String[][] {
     var final_selected: String[][] = [[], [], [], [], []];
     var selected: String[] = [];
     var num_words = words.length - 1;
@@ -55,10 +54,10 @@ export function Words() {
             counter++;
         }
     }
-    console.log(final_selected);
+    // console.log(final_selected);
     return final_selected;
 }
 
-function getRandomInt(max : number) {
+function getRandomInt(max : number): number {
     return Math.floor(Math.random() * max);
 }
