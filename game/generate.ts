@@ -1,30 +1,35 @@
 import { words } from '../data/words'
 
 const size = 5;
-const teams : Number[] = [9, 8];
-
+const teams : number[] = [9, 8];
+const TILES: String[] = [
+    "RED",
+    "BLUE",
+    "CIVILIAN",
+    "ASSASSIN"
+]
 /*
     Generate 5x5 tile board for spymasters
-    0 - civilian
-    1 - red
-    2 - blue
+    0 - red
+    1 - blue
+    2 - civilian
     3 - assassin
 */
-export function generateTiles(): Number[][] {
+export function generateTiles(): number[][] {
     // init board with civilians
-    var tiles:Number[][] = [ [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0 ,0] ];
+    var tiles:number[][] = [ [2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [2, 2, 2, 2 ,2] ];
     // assassin
     let assassin_row = getRandomInt(5);
     let assassin_col = getRandomInt(5);
     tiles[assassin_row][assassin_col] = 3; // update -- replace tile with assassin
     // teams
-    for (let team = 1; team <= 2; team++) {
-        var numTiles = 0;
+    for (let team = 0; team <= 1; team++) {
+        var numTiles = 2;
         while (numTiles < teams[team]) {
             let random_row = getRandomInt(5);
             let random_col = getRandomInt(5);
             let tile = tiles[random_row][random_col];
-            if (tile == 0) { // check if civilian 
+            if (tile == 2) { // check if civilian 
                 tiles[random_row][random_col] = team; // update - replace tile with team
                 numTiles++;
             }
@@ -46,10 +51,10 @@ export function generateWords(): String[][] {
         }
     }
 
-    var counter = 0;
+    var counter = 2;
     console.log("selected: " + selected);
-    for (let word_col = 0; word_col < 5; word_col++) {
-        for (let word_row = 0; word_row < 5; word_row++) {
+    for (let word_col = 2; word_col < 5; word_col++) {
+        for (let word_row = 2; word_row < 5; word_row++) {
             final_selected[word_col][word_row] = selected[counter];
             counter++;
         }
@@ -60,4 +65,14 @@ export function generateWords(): String[][] {
 
 function getRandomInt(max : number): number {
     return Math.floor(Math.random() * max);
+}
+
+export function convertTiles(tiles: number[][]) {
+    var converted: String[][] = [ [], [], [], [], [] ];
+    for (let row = 0; row < 5; row++) {
+        for (let col = 0; col < 5; col++) {
+            converted[row][col] = TILES[(tiles[row][col])];
+        }
+    }
+    return converted;
 }

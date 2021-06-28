@@ -1,4 +1,4 @@
-import { generateWords, generateTiles } from "./generate";
+import { generateWords, generateTiles, convertTiles } from "./generate";
 import { useState } from "react";
 
 const GAME_STATES: String[] = [
@@ -9,10 +9,12 @@ const GAME_STATES: String[] = [
     "END"
 ]
 
+
+
 export class Game {
     gameState:String = "INIT";
     words: String[][] = [];
-    tiles: Number[][] = [];
+    tiles: String[][] = [];
     players: String[] = [];
 
     generateWords() {
@@ -20,7 +22,7 @@ export class Game {
     }
 
     generateTiles() {
-        this.tiles = generateTiles();
+        this.tiles = convertTiles(generateTiles());
     }
 
     newPlayer(userid: String) {
@@ -31,6 +33,19 @@ export class Game {
         if (GAME_STATES.includes(newState)) {
             this.gameState = newState;
         }
+    }
+
+    startPlay() {
+        for (let player = 0; player < this.players.length; player++) {
+            // Check if player is ready
+            if (this.words.length < 1) {
+                // not ready
+            }
+            if (this.tiles.length < 1) {
+                // not ready
+            }
+        }
+        this.changeState("PLAY");
     }
 
 }
