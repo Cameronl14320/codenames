@@ -1,4 +1,4 @@
-import { words } from '../../data/words'
+import { words } from '../data/words'
 
 const size = 5;
 const teams : Number[] = [9, 8];
@@ -10,7 +10,7 @@ const teams : Number[] = [9, 8];
     2 - blue
     3 - assassin
 */
-export function Tiles(): Number[][] {
+export function generateTiles(): Number[][] {
     // init board with civilians
     var tiles:Number[][] = [ [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0 ,0] ];
     // assassin
@@ -34,7 +34,7 @@ export function Tiles(): Number[][] {
     return tiles;
 }
 
-export function Words(): String[][] {
+export function generateWords(): String[][] {
     var final_selected: String[][] = [[], [], [], [], []];
     var selected: String[] = [];
     var num_words = words.length - 1;

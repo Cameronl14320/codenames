@@ -1,12 +1,16 @@
-import { Words, Tiles } from "../../pages/api/generate"
+import { Game } from "../../game/game";
 
-export function spymaster() {
-    var tiles: Number[][] = Tiles();
-    return;
-}
+export function generateBoard(props: { game: Game}) {
+    const game = props.game;
+    // var words: String[][] = Words();
+    // var tiles: Number[][] = Tiles();
 
-export function generateBoard() {
-    var words: String[][] = Words();
+    // Generate the board according to words
+    // Generate the spymaster tiles according to tiles
 
-    return;
+    return (
+        <div>
+            This is the board
+        </div>
+    );
 }
