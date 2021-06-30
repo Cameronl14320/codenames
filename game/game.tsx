@@ -40,5 +40,9 @@ export default class Game {
         }
         this.changeState(GAME_STATES.PLAY);
     }
+
+    endTurn() {
+        
+    }
 }
 

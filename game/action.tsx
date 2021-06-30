@@ -1,5 +1,5 @@
-import Player from './player'
-import Board from './board'
+import Player from './Player'
+import Board from './Board'
 
 type guess = {
     row: number;
