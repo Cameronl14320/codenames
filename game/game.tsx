@@ -1,21 +1,50 @@
-import { generateWords, generateTiles, convertTiles } from "./generate";
+import { generateWords, generateTiles } from "./generate";
 import { useState } from "react";
 
-const GAME_STATES: String[] = [
-    "INIT",
-    "LOBBY",
-    "SETUP",
-    "PLAY",
-    "END"
-]
+enum GAME_STATES {
+    INIT,
+    LOBBY,
+    SETUP,
+    PLAY,
+    END
+}
 
+enum TILES {
+    RED,
+    BLUE,
+    CIVILIAN,
+    ASSASSIN
+}
 
+enum TEAMS {
+    RED,
+    BLUE
+}
+
+type guess = {
+    row: number;
+    col: number;
+}
+
+type player = {
+    userid: string;
+    team: TILES
+}
 
 export class Game {
-    gameState:String = "INIT";
-    words: String[][] = [];
-    tiles: String[][] = [];
-    players: String[] = [];
+    gameState: GAME_STATES;
+    currentTurn: TEAMS;
+    words: String[][];
+    tiles: String[][];
+    players: String[];
+
+    constructor() {
+        this.players = [];
+        this.tiles = [];
+        this.words = [];
+        this.currentTurn = TEAMS.RED;
+        this.gameState = GAME_STATES.INIT;
+    }
 
     generateWords() {
         this.words = generateWords();
@@ -29,10 +58,8 @@ export class Game {
         this.players.push(userid);
     }
 
-    changeState(newState: String) {
-        if (GAME_STATES.includes(newState)) {
-            this.gameState = newState;
-        }
+    changeState(newState: GAME_STATES) {
+        this.gameState = newState;
     }
 
     startPlay() {
@@ -45,7 +72,27 @@ export class Game {
                 // not ready
             }
         }
-        this.changeState("PLAY");
+        this.changeState(GAME_STATES.PLAY);
     }
 
+    makeRelation(relation: String, related: number) {
+
+    }
+
+    makeGuess(player: player, guess: guess) {
+        if (this.tiles[guess.row][guess.col] == "ASSASSIN") {
+            // Game lost for player
+        }
+    }
+
+}
+
+function convertTiles(tiles: number[][]) {
+    var converted: String[][] = [ [], [], [], [], [] ];
+    for (let row = 0; row < 5; row++) {
+        for (let col = 0; col < 5; col++) {
+            converted[row][col] = TILES[(tiles[row][col])];
+        }
+    }
+    return converted;
 }
