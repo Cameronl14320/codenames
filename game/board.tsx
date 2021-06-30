@@ -18,6 +18,14 @@ export class Board {
         this.tiles = this.generateTiles();
     }
     
+    updateWords() {
+        this.words = generateWords();
+    }
+
+    updateTiles() {
+        this.tiles = this.generateTiles();
+    }
+
     generateTiles() {
         return convertTiles(generateTiles());
     }
