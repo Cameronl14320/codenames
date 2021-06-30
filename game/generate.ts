@@ -2,12 +2,6 @@ import { words } from '../data/words'
 
 const size = 5;
 const teams : number[] = [9, 8];
-const TILES: String[] = [
-    "RED",
-    "BLUE",
-    "CIVILIAN",
-    "ASSASSIN"
-]
 /*
     Generate 5x5 tile board for spymasters
     0 - red
@@ -65,14 +59,4 @@ export function generateWords(): String[][] {
 
 function getRandomInt(max : number): number {
     return Math.floor(Math.random() * max);
-}
-
-export function convertTiles(tiles: number[][]) {
-    var converted: String[][] = [ [], [], [], [], [] ];
-    for (let row = 0; row < 5; row++) {
-        for (let col = 0; col < 5; col++) {
-            converted[row][col] = TILES[(tiles[row][col])];
-        }
-    }
-    return converted;
 }

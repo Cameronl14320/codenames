@@ -10,22 +10,12 @@ enum GAME_STATES {
 }
 
 
-enum TEAMS {
+export enum TEAMS {
     RED,
     BLUE
 }
 
-type guess = {
-    row: number;
-    col: number;
-}
-
-type player = {
-    userid: string;
-    team: TEAMS;
-}
-
-export class Game {
+export default class Game {
     gameState: GAME_STATES;
     currentTurn: TEAMS;
     players: String[];
@@ -47,28 +37,8 @@ export class Game {
     startPlay() {
         for (let player = 0; player < this.players.length; player++) {
             // Check if player is ready
-            if (this.words.length < 1) {
-                // not ready
-            }
-            if (this.tiles.length < 1) {
-                // not ready
-            }
         }
         this.changeState(GAME_STATES.PLAY);
-    }
-
-    makeRelation(relation: String, related: number) {
-
-    }
-
-    makeGuess(player: player, guess: guess): EXECUTION {
-        if (player.team != this.currentTurn) {
-            return EXECUTION.FAILED;
-        }
-        if (this.tiles[guess.row][guess.col] == "ASSASSIN") {
-            // Game lost for player
-        }
-        return EXECUTION.SUCCESSFUL;
     }
 }
 

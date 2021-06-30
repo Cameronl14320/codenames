@@ -9,7 +9,7 @@ enum TILES {
 }
 
 
-export class Board {
+export default class Board {
     words: String[][];
     tiles: String[][];
 
