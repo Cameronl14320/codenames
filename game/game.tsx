@@ -1,5 +1,6 @@
 import { generateWords, generateTiles } from "./generate";
 import { useState } from "react";
+import Board from './Board'
 
 enum GAME_STATES {
     INIT,
@@ -18,12 +19,14 @@ export enum TEAMS {
 export default class Game {
     gameState: GAME_STATES;
     currentTurn: TEAMS;
+    board: Board;
     players: String[];
 
     constructor() {
         this.players = [];
         this.currentTurn = TEAMS.RED;
         this.gameState = GAME_STATES.INIT;
+        this.board = new Board();
     }
 
     newPlayer(userid: String) {

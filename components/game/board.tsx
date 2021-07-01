@@ -1,4 +1,4 @@
-import { Game } from "../../game/Game";
+import Game from "../../game/Game";
 
 export function generateBoard(props: { game: Game}) {
     const game = props.game;
