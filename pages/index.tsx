@@ -5,16 +5,19 @@ import { Box, Container, Button, TextField, Input } from '@material-ui/core'
 import { generateWords, generateTiles } from '../game/generate'
 import { useState } from 'react'
 import { css, jsx } from '@emotion/react'
+import GameDisplay from '../components/game/game'
+import GenerateBoard from '../components/game/board'
 
 
 
 export default function Home() {
   var roomCode: String = "";
+  var game = GameDisplay();
   return (
     <Box css={{
       textAlign: 'center',
     }}>
-      test align
+      {game}
     </Box>
   )
 }

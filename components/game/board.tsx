@@ -11,12 +11,13 @@ export default function GenerateBoard(props: { game: Game}) {
     // Generate the board according to words
     // Generate the spymaster tiles according to tiles
 
-    var display_words = [];
-    var display_tiles = [];
+    var display_words = displayWords({words});
+    var display_tiles = displayTiles({tiles});
 
     return (
         <div>
-            This is the board
+            {display_words}
+            {display_tiles}
         </div>
     );
 }
