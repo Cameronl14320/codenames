@@ -8,7 +8,7 @@ export default function GenerateBoard(props: { game: Game}) {
     var words : String[][] = board.words;
     var tiles : String[][] = board.tiles;
 
-    console.log("Board: " + words)
+    // console.log("Board: " + words)
 
     // Generate the board according to words
     // Generate the spymaster tiles according to tiles

@@ -16,7 +16,7 @@ export default class Board {
     constructor() {
         this.words = generateWords();
         this.tiles = this.generateTiles();
-        console.log("New Board: " + this.words);
+        // console.log("New Board: " + this.words);
     }
     
     updateWords() {

@@ -45,7 +45,7 @@ export function generateWords(): String[][] {
         }
     }
 
-    var counter = 2;
+    var counter = 0;
     console.log("selected: " + selected);
     for (let word_row = 0; word_row < 5; word_row++) {
         for (let word_col = 0; word_col < 5; word_col++) {
@@ -53,7 +53,7 @@ export function generateWords(): String[][] {
             counter++;
         }
     }
-    console.log("Generate Words: " + final_selected);
+    console.log("selected: " + final_selected);
     return final_selected;
 }
 

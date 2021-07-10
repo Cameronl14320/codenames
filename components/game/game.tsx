@@ -4,7 +4,7 @@ import { Box } from '@material-ui/core'
 
 export default function GameDisplay() {
     const game: Game = new Game();
-    console.log("Game: " + game.board.words);
+    // console.log("Game: " + game.board.words);
 
     var boardDisplay = GenerateBoard({ game });
     
