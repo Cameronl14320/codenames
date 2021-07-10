@@ -47,13 +47,13 @@ export function generateWords(): String[][] {
 
     var counter = 2;
     console.log("selected: " + selected);
-    for (let word_col = 2; word_col < 5; word_col++) {
-        for (let word_row = 2; word_row < 5; word_row++) {
-            final_selected[word_col][word_row] = selected[counter];
+    for (let word_row = 0; word_row < 5; word_row++) {
+        for (let word_col = 0; word_col < 5; word_col++) {
+            final_selected[word_row][word_col] = selected[counter];
             counter++;
         }
     }
-    // console.log(final_selected);
+    console.log("Generate Words: " + final_selected);
     return final_selected;
 }
 

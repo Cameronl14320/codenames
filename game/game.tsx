@@ -27,6 +27,7 @@ export default class Game {
         this.currentTurn = TEAMS.RED;
         this.gameState = GAME_STATES.INIT;
         this.board = new Board();
+        console.log("New Game: " + this.board.words);
     }
 
     newPlayer(userid: String) {
