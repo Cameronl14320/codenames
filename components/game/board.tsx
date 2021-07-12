@@ -1,8 +1,8 @@
 import Game from "../../pages/api/game/Game";
 import Board from "../../pages/api/game/Board";
-import { Box, Button } from "@material-ui/core"
+import { Box, Grid, Button } from "@material-ui/core"
 
-export default function GenerateBoard(props: { game: Game}) {
+export default function GenerateBoard(props: { game: Game }) {
     const game = props.game;
     var board : Board = game.board;
     var words : String[][] = board.words;
@@ -16,10 +16,22 @@ export default function GenerateBoard(props: { game: Game}) {
     var display_words = displayWords({words});
     var display_tiles = displayTiles({tiles});
 
+    console.log("display words: " + words)
+
     return (
         <Box>
-            {display_words}
-            {display_tiles}
+            <Grid
+                container
+                direction="column"
+            >
+                <Box>
+                    {display_words}
+                </Box>
+                <Box>
+                    {display_tiles}
+                </Box>
+            </Grid>
+
         </Box>
     );
 }

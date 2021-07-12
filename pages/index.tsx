@@ -7,20 +7,20 @@ import { useState } from 'react'
 import { css, jsx } from '@emotion/react'
 import GameDisplay from '../components/game/game'
 import Game from './api/game/Game'
+import Board from './api/game/Board'
 import GenerateBoard from '../components/game/board'
 
 
 
 export default function Home() {
   var roomCode: String = "";
-  const [game, changeGame] = useState(new Game());
+  const [board, changeGame] = useState(new Board());
 
-  console.log("gamestate: " + game.board.words);
+  console.log("gamestate: " + board.words);
   return (
-    <Box css={{
+    <Box className="index-body" css={{
       textAlign: 'center',
     }}>
-      <GenerateBoard game={game}/>
     </Box>
   )
 }
