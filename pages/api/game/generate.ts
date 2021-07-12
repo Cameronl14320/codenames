@@ -1,4 +1,4 @@
-import { words } from '../data/words'
+import { words } from '../../../data/words'
 
 const size = 5;
 const teams : number[] = [9, 8];

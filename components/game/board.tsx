@@ -1,5 +1,5 @@
-import Game from "../../game/Game";
-import Board from "../../game/Board";
+import Game from "../../pages/api/game/Game";
+import Board from "../../pages/api/game/Board";
 import { Box, Button } from "@material-ui/core"
 
 export default function GenerateBoard(props: { game: Game}) {

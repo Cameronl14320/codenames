@@ -1,4 +1,4 @@
-import Game from "../../game/Game";
+import Game from "../../pages/api/game/Game";
 import GenerateBoard from "./board";
 import { Box } from '@material-ui/core'
 
