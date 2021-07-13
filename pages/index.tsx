@@ -5,20 +5,28 @@ import { Box, Container, Button, TextField, Input } from '@material-ui/core'
 import { generateWords, generateTiles } from './api/game/generate'
 import { useState } from 'react'
 import { css, jsx } from '@emotion/react'
-import GameDisplay from '../components/game/game'
+// import GameDisplay from '../components/game/game'
 import Game from './api/game/Game'
 import Board from './api/game/Board'
 import GenerateBoard from '../components/game/board'
 
 
 
-function Home() {
+function Home(props: {game: Game}) {
   var roomCode: String = "";
-  const [board, changeGame] = useState(new Board());
+  const [words, changeWords] = useState(generateWords());
+  const [tiles, changeTiles] = useState(generateTiles());
 
-  console.log("gamestate: " + board.words);
   return (
     <div className="index-body">
+      <TextField id="roomcode_input" variant="outlined">
+      </TextField>
+      <Button onClick={() => {changeTiles(generateTiles())} }>
+        Tiles
+      </Button>
+      <Button onClick={() => {changeWords(generateWords())}}>
+        Words
+      </Button>
     </div>
   )
 }
@@ -33,11 +41,3 @@ export async function getStaticProps() {
 
 export default Home
 
-// <TextField id="roomcode_input" variant="outlined">
-// </TextField>
-// <Button onClick={() => {generateTiles()} }>
-//   Tiles
-// </Button>
-// <Button onClick={() => {generateWords()}}>
-//   Words
-// </Button>

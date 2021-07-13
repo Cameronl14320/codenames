@@ -2,9 +2,8 @@ import Game from "../../pages/api/game/Game";
 import Board from "../../pages/api/game/Board";
 import { Box, Grid, Button } from "@material-ui/core"
 
-export default function GenerateBoard(props: { game: Game }) {
-    const game = props.game;
-    var board : Board = game.board;
+export default function GenerateBoard(props: { board: Board }) {
+    var board : Board = props.board
     var words : String[][] = board.words;
     var tiles : String[][] = board.tiles;
 
@@ -24,7 +23,7 @@ export default function GenerateBoard(props: { game: Game }) {
                 container
                 direction="column"
             >
-                <Box>
+                <Box suppressHydrationWarning>
                     {display_words}
                 </Box>
                 <Box>
