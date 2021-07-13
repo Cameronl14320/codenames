@@ -12,7 +12,7 @@ import GenerateBoard from '../components/game/board'
 
 
 
-export default function Home() {
+function Home() {
   var roomCode: String = "";
   const [board, changeGame] = useState(new Board());
 
@@ -24,6 +24,15 @@ export default function Home() {
     </Box>
   )
 }
+
+export async function getServerSideProps() {
+  const res = await fetch('https://.../data')
+  const data = await res.json()
+
+  return { props: { data } }
+}
+
+export default Home
 
 // <TextField id="roomcode_input" variant="outlined">
 // </TextField>
