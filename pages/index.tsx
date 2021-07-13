@@ -18,16 +18,15 @@ function Home() {
 
   console.log("gamestate: " + board.words);
   return (
-    <Box className="index-body" css={{
-      textAlign: 'center',
-    }}>
-    </Box>
+    <div className="index-body">
+    </div>
   )
 }
 
-export async function getServerSideProps() {
-  const res = await fetch('https://.../data')
-  const data = await res.json()
+export async function getStaticProps() {
+  // const res = await fetch('https://.../data')
+  const data = {
+  }
 
   return { props: { data } }
 }
