@@ -11,10 +11,7 @@ export class Action {
 
     }
 
-    makeGuess(board: Board, player: Player, guess: guess): Board {
-        if (board.tiles[guess.row][guess.col] == "ASSASSIN") {
-            // Game lost for player
-        }
-        return new Board();
+    makeGuess(board: Board, player: Player, guess: guess) {
+
     }
 }

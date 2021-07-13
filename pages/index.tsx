@@ -1,43 +1,72 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { Box, Container, Button, TextField, Input } from '@material-ui/core'
-import { generateWords, generateTiles } from './api/game/generate'
+import { Box, Container, Button, TextField, Input, Grid } from '@material-ui/core'
+import { generateWords, generateTiles, convertTiles } from './api/game/generate'
 import { useState } from 'react'
 import { css, jsx } from '@emotion/react'
-// import GameDisplay from '../components/game/game'
 import Game from './api/game/Game'
-import Board from './api/game/Board'
-import GenerateBoard from '../components/game/board'
+
+// import GenerateBoard from '../components/game/board'
+// import GameDisplay from '../components/game/game'
 
 
 
-function Home(props: {game: Game}) {
+export default function Home(props: {game: Game}) {
   var roomCode: String = "";
   const [words, changeWords] = useState(generateWords());
   const [tiles, changeTiles] = useState(generateTiles());
 
   return (
-    <div className="index-body">
-      <TextField id="roomcode_input" variant="outlined">
-      </TextField>
-      <Button onClick={() => {changeTiles(generateTiles())} }>
-        Tiles
-      </Button>
-      <Button onClick={() => {changeWords(generateWords())}}>
-        Words
-      </Button>
+    <div>
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+      >
+        <Button onClick={() => {changeTiles(generateTiles())} }>
+          Tiles
+        </Button>
+        <Button onClick={() => {changeWords(generateWords())}}>
+          Words
+        </Button>
+
+        <Container>
+          {displayWords(words)}
+        </Container>
+
+        <Container>
+          {displayTiles(convertTiles(tiles))}
+        </Container>
+      </Grid>
     </div>
   )
 }
 
-export async function getStaticProps() {
-  // const res = await fetch('https://.../data')
-  const data = {
+function displayWords(words: String[][]) {
+  var display_words: any[] = [];
+  for (let row = 0; row < 5; row++) {
+      for (let col = 0; col < 5; col++) {
+          display_words.push(
+              <Button key={"word-" + row + "-" + col}>
+                  {words[row][col]}
+              </Button>
+          )
+      }
   }
-
-  return { props: { data } }
+  return display_words;
 }
 
-export default Home
-
+function displayTiles(tiles: String[][]) {
+  var display_tiles: any[] = [];
+  for (let row = 0; row < 5; row++) {
+      for (let col = 0; col < 5; col++) {
+          display_tiles.push(
+              <Button key={"tile-" + row + "-" + col}>
+                  {tiles[row][col]}
+              </Button>
+          )
+      }
+  }
+  return display_tiles;
+}
