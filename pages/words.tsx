@@ -1,4 +1,4 @@
-import { generateWords } from './api/game/generate'
+import { generateWords } from './api/game'
 import { Button } from '@material-ui/core'
 
 function Words(props: { words: String[] }) {

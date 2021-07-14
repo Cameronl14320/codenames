@@ -3,7 +3,7 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import red from '@material-ui/core/colors/red';
 
 // Create a theme instance.
-export const theme = createTheme({
+const theme = createTheme({
     palette: {
         primary: {
             main: '#556cd6',
@@ -20,7 +20,7 @@ export const theme = createTheme({
     },
 });
 
-export const tileTheme = createTheme({
+const tileTheme = createTheme({
     palette: {
         primary: {
             main: red[0],

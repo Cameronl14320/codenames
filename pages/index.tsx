@@ -1,9 +1,12 @@
 import { Box, Container, Button, TextField, Input, Grid } from '@material-ui/core'
-import { generateWords, generateTiles, convertTiles } from './api/game/generate'
+import { generateWords, generateTiles, convertTiles } from './api/game'
 import { useState } from 'react'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { ThemeProvider } from '@material-ui/styles'
-import { tileTheme } from '../themes/theme'
+import useSWR from 'swr'
+
+const fetcher = (url: any) => fetch(url).then((res) => res.json())
+
 
 // import GenerateBoard from '../components/game/board'
 // import GameDisplay from '../components/game/game'
@@ -31,11 +34,9 @@ function Home(props: {words: String[], tiles: number[]}) {
   converted_tiles.map((tile) => {
     let id = "tile-" + n;
     tile_display.push(
-      <ThemeProvider theme={tileTheme}>
-        <Button color="primary" id={id} key={id}>
-          {tile}
-        </Button>
-      </ThemeProvider>
+      <Button color="primary" id={id} key={id}>
+        {tile}
+      </Button>
     )
     n++;
   })
@@ -54,8 +55,8 @@ function Home(props: {words: String[], tiles: number[]}) {
           {word_display}
         </div>
         <Button onClick={() => {
-          let newWords: String[] = generateWords();
-          changeWords(newWords);
+          const { data, error } = useSWR('/api/game/generate', fetcher)
+          console.log(data);
         }}>
           Change Words
         </Button>
@@ -92,3 +93,4 @@ export const getStaticProps: GetStaticProps = async (
 }
 
 export default Home
+

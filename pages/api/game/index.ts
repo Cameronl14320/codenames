@@ -76,4 +76,22 @@ function getRandomInt(max : number): number {
     return Math.floor(Math.random() * max);
 }
 
+const handler: any = (req: NextApiRequest, res: NextApiResponse) => {
+    console.log("hndler");
+    if (req.method === 'WORDS') {
+        const words: String[] = generateWords();
+        res.status(200).json({
+            words,
+        })
+    } else if (req.method === 'TILES') {
+        const tiles: number[] = generateTiles();
+        res.status(200).json({
+            tiles,
+        })
+    } else {
+        console.log("error in generate handler");
+        res.status(404).json({})
+    }
+}
 
+export default handler
