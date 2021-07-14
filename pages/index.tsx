@@ -17,8 +17,9 @@ function Home(props: {words: String[]}) {
 
   var word_display: any[] = []
   words.map((word) => {
+    let id = words.indexOf(word).toString();
     word_display.push(
-      <Button key={"words-" + word}>
+      <Button id={id} key={id}>
         {word}
       </Button>
     )
@@ -31,9 +32,19 @@ function Home(props: {words: String[]}) {
         direction="column"
         alignItems="center"
       >
-        <Box sx={{ display: 'grid', gridTemplateRows: 'repeat(5, 1fr)' }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(5, 1fr)'
+        }}>
           {word_display}
-        </Box>
+        </div>
+        <Button onClick={() => {
+          let newWords: String[] = generateWords();
+          console.log(newWords);
+          changeWords(newWords);
+        }}>
+          Change Words
+        </Button>
       </Grid>
     </div>
   )

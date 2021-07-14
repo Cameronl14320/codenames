@@ -1,4 +1,5 @@
 import { words } from '../../../data/words'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 const size = 5;
 const teams : number[] = [9, 8];
@@ -17,23 +18,22 @@ enum TILES {
     2 - civilian
     3 - assassin
 */
-export function generateTiles(): number[][] {
+export function generateTiles(): number[] {
     // init board with civilians
-    var tiles:number[][] = [ [2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [2, 2, 2, 2 ,2] ];
+    var tiles:number[] = [];
+    var num_tiles = 25;
     // assassin
-    let assassin_row = getRandomInt(5);
-    let assassin_col = getRandomInt(5);
-    tiles[assassin_row][assassin_col] = 3; // update -- replace tile with assassin
+    let assassin_tile = getRandomInt(num_tiles);
+    tiles[assassin_tile] = 3; // update -- replace tile with assassin
     // teams
     for (let team = 0; team <= 1; team++) {
-        var numTiles = 2;
-        while (numTiles < teams[team]) {
-            let random_row = getRandomInt(5);
-            let random_col = getRandomInt(5);
-            let tile = tiles[random_row][random_col];
+        var team_tiles = 0;
+        while (team_tiles < teams[team]) {
+            let random_tile = getRandomInt(num_tiles);
+            let tile = tiles[random_tile];
             if (tile == 2) { // check if civilian 
-                tiles[random_row][random_col] = team; // update - replace tile with team
-                numTiles++;
+                tiles[random_tile] = team; // update - replace tile with team
+                team_tiles++;
             }
         }
     }
@@ -51,16 +51,14 @@ export function generateWords(): String[] {
             selected.push(random_word);
         }
     }
-    
+
     return selected;
 }
 
-export function convertTiles(tiles: number[][]) {
-    var converted: String[][] = [ [], [], [], [], [] ];
-    for (let row = 0; row < 5; row++) {
-        for (let col = 0; col < 5; col++) {
-            converted[row][col] = TILES[(tiles[row][col])];
-        }
+export function convertTiles(tiles: number[]) {
+    var converted: String[] = [];
+    for (let tile = 0; tile < 25; tile++) {
+            converted[tile]= TILES[tile];
     }
     return converted;
 }
