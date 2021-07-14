@@ -22,6 +22,15 @@ export function generateTiles(): number[] {
     // init board with civilians
     var tiles:number[] = [];
     var num_tiles = 25;
+
+    var iterations = 0;
+    while (tiles.length < 25) {
+        tiles.push(2)
+        iterations++;
+        if (iterations > num_tiles) {
+            break;
+        }
+    }
     // assassin
     let assassin_tile = getRandomInt(num_tiles);
     tiles[assassin_tile] = 3; // update -- replace tile with assassin
