@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 const size = 5;
 const teams : number[] = [9, 8];
+const num_tiles = 25;
 
 enum TILES {
     RED,
@@ -21,7 +22,6 @@ enum TILES {
 export function generateTiles(): number[] {
     // init board with civilians
     var tiles:number[] = [];
-    var num_tiles = 25;
 
     var iterations = 0;
     while (tiles.length < 25) {
@@ -66,8 +66,8 @@ export function generateWords(): String[] {
 
 export function convertTiles(tiles: number[]) {
     var converted: String[] = [];
-    for (let tile = 0; tile < 25; tile++) {
-            converted[tile]= TILES[tile];
+    for (let tile = 0; tile < num_tiles; tile++) {
+        converted[tile] = TILES[tiles[tile]];
     }
     return converted;
 }
