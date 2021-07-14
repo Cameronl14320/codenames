@@ -1,7 +1,10 @@
 import { generateWords } from './api/game/generate'
+import { Button } from '@material-ui/core'
 
 function Words(props: { words: String[][] }) {
+    var words: String[][] = props.words;
 
+    return displayWords(words);
 }
 
 export async function GetStaticProps(context: any) {

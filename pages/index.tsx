@@ -6,6 +6,7 @@ import { generateWords, generateTiles, convertTiles } from './api/game/generate'
 import { useState } from 'react'
 import { css, jsx } from '@emotion/react'
 import Game from './api/game/Game'
+import Words from './words'
 
 // import GenerateBoard from '../components/game/board'
 // import GameDisplay from '../components/game/game'
@@ -24,7 +25,8 @@ export default function Home(props: {game: Game}) {
         direction="column"
         alignItems="center"
       >
-        <Button onClick={() => {changeTiles(generateTiles())} }>
+        <Words/>
+        {/* <Button onClick={() => {changeTiles(generateTiles())} }>
           Tiles
         </Button>
         <Button onClick={() => {changeWords(generateWords())}}>
@@ -37,7 +39,7 @@ export default function Home(props: {game: Game}) {
 
         <Container>
           {displayTiles(convertTiles(tiles))}
-        </Container>
+        </Container> */}
       </Grid>
     </div>
   )
