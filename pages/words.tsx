@@ -1,9 +1,7 @@
 import { generateWords } from './api/game/generate'
 import { Button } from '@material-ui/core'
 
-function Words(props: { words: String[][] }) {
-    var words: String[][] = props.words;
-
+function Words({ words: String[][] }) {
     return displayWords(words);
 }
 
