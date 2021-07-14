@@ -16,11 +16,13 @@ function Home(props: {words: String[]}) {
   const [tiles, changeTiles] = useState(generateTiles());
 
   var word_display: any[] = []
-  words.map((word) => word_display.push(
-    <Button key={"words-" + word}>
-      {word}
-    </Button>
-  ))
+  words.map((word) => {
+    word_display.push(
+      <Button key={"words-" + word}>
+        {word}
+      </Button>
+    )
+  })
 
   return (
     <div>
@@ -29,9 +31,9 @@ function Home(props: {words: String[]}) {
         direction="column"
         alignItems="center"
       >
-        <Container>
+        <Box sx={{ display: 'grid', gridTemplateRows: 'repeat(5, 1fr)' }}>
           {word_display}
-        </Container>
+        </Box>
       </Grid>
     </div>
   )
