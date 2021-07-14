@@ -41,8 +41,7 @@ export function generateTiles(): number[][] {
     return tiles;
 }
 
-export function generateWords(): String[][] {
-    var final_selected: String[][] = [[], [], [], [], []];
+export function generateWords(): String[] {
     var selected: String[] = [];
     var num_words = words.length - 1;
 
@@ -52,17 +51,8 @@ export function generateWords(): String[][] {
             selected.push(random_word);
         }
     }
-
-    var counter = 0;
-    console.log("selected: " + selected);
-    for (let word_row = 0; word_row < 5; word_row++) {
-        for (let word_col = 0; word_col < 5; word_col++) {
-            final_selected[word_row][word_col] = selected[counter];
-            counter++;
-        }
-    }
-    console.log("selected: " + final_selected);
-    return final_selected;
+    
+    return selected;
 }
 
 export function convertTiles(tiles: number[][]) {
