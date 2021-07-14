@@ -15,12 +15,13 @@ function Home(props: {words: String[]}) {
   const [words, changeWords] = useState(props.words);
   const [tiles, changeTiles] = useState(generateTiles());
 
-
-  var word_display = words.map((word) => {
-    <Button>
+  var word_display: any[] = []
+  words.map((word) => word_display.push(
+    <Button key={"words-" + word}>
       {word}
     </Button>
-  })
+  ))
+
   return (
     <div>
       <Grid
